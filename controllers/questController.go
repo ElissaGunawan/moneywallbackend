@@ -170,7 +170,7 @@ func RefreshQuest() error {
 				UserID:          int(user.ID),
 				AchievementCode: achievementReduceExpense,
 				AchievementName: fmt.Sprintf("Kurangi pengeluaran harian sebesar Rp %.2f (5 persen pengeluaran harian)", expenseSum/7*0.05),
-				ReduceExpense:   expenseSum / 7 * 0.05,
+				ReduceExpense:   expenseSum / 7 * 0.95,
 				Exp:             50,
 				Reward:          "Get 50 exp",
 			})
