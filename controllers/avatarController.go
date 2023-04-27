@@ -10,17 +10,18 @@ import (
 )
 
 const (
-	avatarDefault                         = "avatar_default"
-	avatarWomanLockedAchievement5Expense  = "avatar_woman"
-	avatarMan                             = "avatar_man"
-	avatarManBrownHair                    = "avatar_man_brown_hair"
-	avatarWomanCurlyHair                  = "avatar_woman_curly_hair"
-	avatarManBlackHair                    = "avatar_man_black_hair"
-	avatarManLockedAchievement5Income     = "avatar_man_locked_achievement"
-	avatarWomanLockedAchievement3Account  = "avatar_woman_locked_achievement"
-	avatarManLockedCompletedDailyQuest    = "avatar_man_locked_daily_quest"
-	avatarManLockedAchievementEditProfile = "avatar_man_locked_edit_profile"
-	avatarDefaultURL                      = "https://ik.imagekit.io/cq2exqppw/man__4_.png"
+	avatarDefault                             = "avatar_default"
+	avatarWomanLockedAchievement5Expense      = "avatar_woman"
+	avatarMan                                 = "avatar_man"
+	avatarManBrownHair                        = "avatar_man_brown_hair"
+	avatarWomanCurlyHair                      = "avatar_woman_curly_hair"
+	avatarManBlackHair                        = "avatar_man_black_hair"
+	avatarManLockedAchievement5Income         = "avatar_man_locked_achievement"
+	avatarWomanLockedAchievement3Account      = "avatar_woman_locked_achievement"
+	avatarManLockedCompletedDailyQuest        = "avatar_man_locked_daily_quest"
+	avatarManLockedAchievementEditProfile     = "avatar_man_locked_edit_profile"
+	avatarPandaLockedAchievementBeginnersLuck = "avatar_panda"
+	avatarDefaultURL                          = "https://ik.imagekit.io/cq2exqppw/man__4_.png"
 )
 
 var initAvatars = []models.Avatar{
@@ -63,6 +64,10 @@ var initAvatars = []models.Avatar{
 	{
 		AvatarCode: avatarManLockedAchievementEditProfile,
 		AvatarURL:  "https://ik.imagekit.io/cq2exqppw/man__5_.png",
+	},
+	{
+		AvatarCode: avatarPandaLockedAchievementBeginnersLuck,
+		AvatarURL:  "https://ik.imagekit.io/cq2exqppw/panda.png",
 	},
 }
 

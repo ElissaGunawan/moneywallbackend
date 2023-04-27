@@ -18,6 +18,7 @@ const (
 	achievementEditProfile      = "edit_profile"
 	achievementCompleteAllQuest = "complete_all_quest"
 	achievementReduceExpense    = "reduce_expense"
+	achievementBeginnersLuck    = "beginners_luck"
 )
 
 var initAchievements = []models.Achievement{

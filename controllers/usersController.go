@@ -39,6 +39,13 @@ func Signup(c *gin.Context) {
 		Password:  string(hash),
 		AvatarURL: avatarDefaultURL,
 	}
+
+	var count int64
+	result := initializers.DB.Model(&models.User{}).Count(&count)
+	if result.Error != nil && result.Error != gorm.ErrRecordNotFound {
+		errorHandler(c, result.Error)
+		return
+	}
 	err = initializers.DB.Transaction(func(tx *gorm.DB) error {
 		result := tx.Create(&user)
 		if result.Error != nil {
@@ -57,6 +64,28 @@ func Signup(c *gin.Context) {
 	if err != nil {
 		errorHandler(c, err)
 		return
+	}
+	if count <= 999 {
+		err = initializers.DB.Transaction(func(tx *gorm.DB) error {
+			errTx := unlockAvatar(tx, int(user.ID), avatarPandaLockedAchievementBeginnersLuck)
+			if errTx != nil {
+				return errTx
+			}
+			result = initializers.DB.Create(&models.Achievement{
+				UserID:          int(user.ID),
+				AchievementCode: achievementBeginnersLuck,
+				AchievementName: "Beginner's luck",
+				Reward:          "Unlock new avatar",
+			})
+			if result.Error != nil {
+				return result.Error
+			}
+			return completeAchievement(tx, int(user.ID), achievementBeginnersLuck)
+		})
+		if err != nil {
+			errorHandler(c, err)
+			return
+		}
 	}
 
 	c.JSON(http.StatusOK, gin.H{})
